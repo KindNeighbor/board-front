@@ -9,10 +9,12 @@ export default function Navigation() {
         <nav>
             <ul>
                 <li>
-                    <Link href="/">Home</Link> {path === "/" ? "-현재 위치-" : ""}
+                    <Link href="/">Home</Link>
+                    {path === "/" ? " <<<" : ""}
                 </li>
                 <li>
-                    <Link href="/board/list">List</Link> {path === "/board/list" ? "-현재 위치-" : ""}
+                    <Link href="/board/list">List</Link>
+                    {path === "/board/list" ? " <<<" : ""}
                 </li>
             </ul>
         </nav>
