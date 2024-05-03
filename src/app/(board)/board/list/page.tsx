@@ -1,15 +1,16 @@
 import {Metadata} from "next";
+import Link from "next/link";
+import { Key } from "react";
 
-export const metadata : Metadata = {
-    title : "list"
+export const metadata: Metadata = {
+    title: "list"
 }
 
-const URL = "http://localhost:8080/rb_boards";
 
 async function getBoards() {
+    const URL = "http://192.168.0.21:8080/rb_boards/";
     const response = await fetch(URL);
-    const json = await response.json();
-    return json;
+    return await response.json();
 }
 
 export default async function BoardList() {
@@ -17,7 +18,14 @@ export default async function BoardList() {
     return (
         <div>
             <h1>Board List</h1>
-            {JSON.stringify(boards)}
+            {
+                boards.map((board: { id: Key , title: string
+                }) =>
+                    <li key={board.id}>
+                        <Link href={`/board/list/${board.id}`}>
+                            {board.title}
+                        </Link>
+                    </li>)}
         </div>
     );
 }
